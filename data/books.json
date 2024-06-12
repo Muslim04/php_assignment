@@ -1,0 +1,131 @@
+{
+    "book0": {
+        "id": "book0",
+        "title": "City of the Gods",
+        "author": "Sonny Whitelaw",
+        "description": "Notes about Argos, the planet originally under the control of the Goa'uld Pelops. A definitive Greek ancestry decorates the structures, as well as the clothing of the Argosians, the planets occupants who prefered to call themselves the Chosen. For some time Pelops operated on the planet, experimenting on the human population, much like Nirrti has done, attempting to expand their lifespan.",
+        "year": 2005,
+        "image": "book_cover_1.png",
+        "planet": "P3X-8596",
+        "ratings": [
+            {
+                "username": "user1",
+                "review": "Great book with rich mythology!",
+                "rating": 5
+            },
+            {
+                "username": "user2",
+                "review": "Interesting plot twists.",
+                "rating": 4
+            },
+            {
+                "username": "f",
+                "review": "Number 1 ",
+                "rating": 5
+            },
+            {
+                "username": "admin",
+                "review": "sdfasdf",
+                "rating": 2
+            }
+        ]
+    },
+    "book1": {
+        "id": "book1",
+        "title": "The Power Behind The Throne",
+        "author": "Steven Savile",
+        "description": "P3X-797 is a world divided into a dark and light side. The Stargate resides on the dark side of the planet where the 'Touched' exist. The light side is inhabited by the 'Untouched'. A histaminalytic virus inhabits the world, forcing anyone with histamine in their bodies to succumb to primeval tendencies. The leader of the light side is Tuplo.",
+        "year": 2007,
+        "image": "book_cover_2.png",
+        "planet": "P3X-797",
+        "ratings": [
+            {
+                "username": "user3",
+                "review": "Loved the storyline.",
+                "rating": 4
+            },
+            {
+                "username": "user4",
+                "review": "A good read.",
+                "rating": 4
+            },
+            {
+                "username": "f",
+                "review": "This is number one bullshit",
+                "rating": 1
+            },
+            {
+                "username": "admin",
+                "review": "sdfasd",
+                "rating": 1
+            },
+            {
+                "username": "admin",
+                "review": "DSF",
+                "rating": 1
+            }
+        ]
+    },
+    "book2": {
+        "id": "book2",
+        "title": "Sacrifice Moon",
+        "author": "Julie Fortune",
+        "description": "Explores the treacherous planet of P5C-353, a barren and hostile world that harbors a deadly secret. The Stargate team must uncover the mystery of the planet's past to ensure the safety of its future.",
+        "year": 2004,
+        "image": "book_cover_3.png",
+        "planet": "P5C-353",
+        "ratings": [
+            {
+                "username": "admin",
+                "review": "sdfasdf",
+                "rating": 2
+            }
+        ]
+    },
+    "book3": {
+        "id": "book3",
+        "title": "Barque of Heaven",
+        "author": "Suzanne Wood",
+        "description": "The planet P3X-562 is home to an ancient ship known as the Barque of Heaven, a vessel of great power and mystery. The SG-1 team must navigate the political intrigue and dangers posed by those who seek to control the Barque.",
+        "year": 2008,
+        "image": "book_cover_4.png",
+        "planet": "P3X-562",
+        "ratings": [
+            {
+                "username": "user2",
+                "review": "Awesome adventure!",
+                "rating": 5
+            }
+        ]
+    },
+    "book4": {
+        "id": "book4",
+        "title": "Valhalla",
+        "author": "Tim Waggoner",
+        "description": "Set on the icy planet of P3X-593, known to its inhabitants as Valhalla. The SG-1 team discovers a civilization modeled after Norse mythology and must contend with a powerful being who believes himself to be the god Odin.",
+        "year": 2006,
+        "image": "book_cover_5.png",
+        "planet": "P3X-593",
+        "ratings": []
+    },
+    "book5": {
+        "id": "book5",
+        "title": "Heart's Desire",
+        "author": "Amy Griswold",
+        "description": "On the lush planet of P4X-347, the SG-1 team encounters a society that thrives on the manipulation of emotions. They must navigate a complex web of relationships and desires to achieve their mission and return home.",
+        "year": 2009,
+        "image": "book_cover_6.png",
+        "planet": "P4X-347",
+        "ratings": []
+    },
+    "book6": {
+        "id": "book6",
+        "title": "Female of the Species",
+        "author": "Geonn Cannon",
+        "description": "Exploring the matriarchal society on the planet P2X-131, the SG-1 team must adapt to a world where women hold all the power and men are subservient. Their mission is complicated by cultural misunderstandings and hidden threats.",
+        "year": 2010,
+        "image": "book_cover_6.png",
+        "planet": "P2X-131",
+        "ratings": []
+    }
+}

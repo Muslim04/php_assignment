@@ -1,0 +1,59 @@
+{
+    "6669972dd2212": {
+        "username": "admin",
+        "email": "admin@gmail.com",
+        "password": "admin",
+        "id": "6669972dd2212",
+        "admin": 1,
+        "reviews": [
+            {
+                "book_id": "book0",
+                "review": "sdfasdf",
+                "rating": 2
+            },
+            {
+                "book_id": "book1",
+                "review": "sdfasd",
+                "rating": 1
+            }
+        ]
+    },
+    "6669ce935f3c1": {
+        "username": "KG047",
+        "email": "user1@gmail.com",
+        "password": "password1",
+        "id": "6669ce935f3c1",
+        "admin": 0,
+        "reviews": [
+            {
+                "book_id": "book0",
+                "review": "Great book with rich mythology!",
+                "rating": 5
+            }
+        ]
+    },
+    "6669df3782953": {
+        "username": "f",
+        "email": "user2@gmail.com",
+        "password": "password2",
+        "id": "6669df3782953",
+        "admin": 0,
+        "reviews": [
+            {
+                "book_id": "book1",
+                "review": "Interesting plot twists.",
+                "rating": 4
+            },
+            {
+                "book_id": "book3",
+                "review": "Awesome adventure!",
+                "rating": 5
+            },
+            {
+                "book_id": "book0",
+                "review": "Number 1 ",
+                "rating": 5
+            }
+        ]
+    }
+}
