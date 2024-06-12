@@ -25,16 +25,14 @@ if (!empty($book['ratings'])) {
     $average_rating = 0;
 }
 
-// Function to check if a book is marked as read by the current user
 function isBookMarkedAsRead($userId, $bookId) {
-    $users = json_decode(file_get_contents('data/users.json'), true);
+    $users = json_decode(file_get_contents('users.json'), true);
     if (isset($users[$userId]['books_read']) && in_array($bookId, $users[$userId]['books_read'])) {
         return true;
     }
     return false;
 }
 
-// Mark book as read process
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mark_read'])) {
     $userId = $_SESSION['user']->id;
     $users = json_decode(file_get_contents('users.json'), true);
@@ -43,13 +41,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mark_read'])) {
         $users[$userId]['books_read'] = [];
     }
 
-    // Add book to user's books_read array if not already marked
     if (!in_array($id, $users[$userId]['books_read'])) {
         $users[$userId]['books_read'][] = $id;
         file_put_contents('users.json', json_encode($users, JSON_PRETTY_PRINT));
     }
 
-    // Redirect back to book page after marking as read
     header("Location: book.php?id=$id");
     exit;
 }
@@ -83,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['review'])) {
                 'review' => htmlspecialchars($review),
                 'rating' => (int) $rating
             ];
-            file_put_contents('data/users.json', json_encode($users, JSON_PRETTY_PRINT));
+            file_put_contents('users.json', json_encode($users, JSON_PRETTY_PRINT));
         }
 
         header("Location: book.php?id=$id");

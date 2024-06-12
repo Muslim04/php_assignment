@@ -27,6 +27,11 @@
                 "username": "admin",
                 "review": "sdfasdf",
                 "rating": 2
+            },
+            {
+                "username": "sd",
+                "review": "dasfd",
+                "rating": 1
             }
         ]
     },
@@ -63,6 +68,11 @@
                 "username": "admin",
                 "review": "DSF",
                 "rating": 1
+            },
+            {
+                "username": "sd",
+                "review": "asdfads",
+                "rating": 2
             }
         ]
     },
@@ -78,6 +88,11 @@
             {
                 "username": "admin",
                 "review": "sdfasdf",
+                "rating": 2
+            },
+            {
+                "username": "f",
+                "review": "dsfasd",
                 "rating": 2
             }
         ]
@@ -126,6 +141,16 @@
         "year": 2010,
         "image": "book_cover_6.png",
         "planet": "P2X-131",
+        "ratings": []
+    },
+    "book666a1970a0f6a": {
+        "id": "book666a1970a0f6a",
+        "title": "asdf",
+        "author": "fggdfg",
+        "description": "sdfgsfdgsdfg",
+        "year": "3",
+        "image": "book_cover_4.png",
+        "planet": "dfgsdfg",
         "ratings": []
     }
 }

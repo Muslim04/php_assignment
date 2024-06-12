@@ -75,5 +75,22 @@
         "admin": 0,
         "id": "666a09652c0b2",
         "books_read": []
+    },
+    "666a18c055fef": {
+        "username": "sd",
+        "email": "abdyvapov04@gmail.com",
+        "password": "d",
+        "admin": 0,
+        "id": "666a18c055fef",
+        "reviews": [
+            {
+                "book_id": "book1",
+                "review": "asdfads",
+                "rating": 2
+            }
+        ],
+        "books_read": [
+            "book1"
+        ]
     }
 }
