@@ -16,7 +16,8 @@
                 "review": "sdfasd",
                 "rating": 1
             }
-        ]
+        ],
+        "books_read": ["book0", "book1"]
     },
     "6669ce935f3c1": {
         "username": "KG047",
@@ -30,7 +31,8 @@
                 "review": "Great book with rich mythology!",
                 "rating": 5
             }
-        ]
+        ],
+        "books_read": ["book0"]
     },
     "6669df3782953": {
         "username": "f",
@@ -54,13 +56,15 @@
                 "review": "Number 1 ",
                 "rating": 5
             }
-        ]
+        ],
+        "books_read": ["book0", "book1", "book3"]
     },
     "666a09652c0b2": {
         "username": "dsfasd",
         "email": "muslimabdyvapov@gmail.com",
         "password": "d",
         "admin": 0,
-        "id": "666a09652c0b2"
+        "id": "666a09652c0b2",
+        "books_read": []
     }
 }

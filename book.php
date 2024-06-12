@@ -25,6 +25,35 @@ if (!empty($book['ratings'])) {
     $average_rating = 0;
 }
 
+// Function to check if a book is marked as read by the current user
+function isBookMarkedAsRead($userId, $bookId) {
+    $users = json_decode(file_get_contents('data/users.json'), true);
+    if (isset($users[$userId]['books_read']) && in_array($bookId, $users[$userId]['books_read'])) {
+        return true;
+    }
+    return false;
+}
+
+// Mark book as read process
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mark_read'])) {
+    $userId = $_SESSION['user']->id;
+    $users = json_decode(file_get_contents('users.json'), true);
+
+    if (!isset($users[$userId]['books_read'])) {
+        $users[$userId]['books_read'] = [];
+    }
+
+    // Add book to user's books_read array if not already marked
+    if (!in_array($id, $users[$userId]['books_read'])) {
+        $users[$userId]['books_read'][] = $id;
+        file_put_contents('users.json', json_encode($users, JSON_PRETTY_PRINT));
+    }
+
+    // Redirect back to book page after marking as read
+    header("Location: book.php?id=$id");
+    exit;
+}
+
 $errors = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['review'])) {
     $review = $_POST['review'];
@@ -73,51 +102,59 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['review'])) {
     <link rel="stylesheet" href="styles/cards.css">
 </head>
 <body>
-    <header>
-        <h1><a href="index.php">IK-Library</a> > Detailed Description:</h1>
-    </header>
-    <div id="content">
-        <img src="assets/<?= htmlspecialchars($book['image']) ?>" alt="Book Cover"><br>
-        <h3>Title: <?= htmlspecialchars($book['title']) ?></h3> 
-        <h3>Author: <?= htmlspecialchars($book['author']) ?></h3>
-        <p><strong>Description:</strong><br> <?= nl2br(htmlspecialchars($book['description'])) ?></p> 
-        <h3>Year: <?= htmlspecialchars($book['year']) ?></h3> 
-        <h3>Source Planet: <?= htmlspecialchars($book['planet']) ?></h3> 
-        <h3>Average Rating: <?= number_format($average_rating, 1) ?></h3>
+<header>
+    <h1><a href="index.php">IK-Library</a> > Detailed Description:</h1>
+</header>
+<div id="content">
+    <img src="assets/<?= htmlspecialchars($book['image']) ?>" alt="Book Cover"><br>
+    <h3>Title: <?= htmlspecialchars($book['title']) ?></h3> 
+    <h3>Author: <?= htmlspecialchars($book['author']) ?></h3>
+    <p><strong>Description:</strong><br> <?= nl2br(htmlspecialchars($book['description'])) ?></p> 
+    <h3>Year: <?= htmlspecialchars($book['year']) ?></h3> 
+    <h3>Source Planet: <?= htmlspecialchars($book['planet']) ?></h3> 
+    <h3>Average Rating: <?= number_format($average_rating, 1) ?></h3>
 
-        <?php if (!empty($book['ratings'])): ?>
-            <h3>Reviews:</h3>
-            <ul>
-                <?php foreach ($book['ratings'] as $rating): ?>
-                    <li>
-                        <strong>Rating by <?= htmlspecialchars($rating['username']) ?>:</strong><br>
-                        <?= htmlspecialchars($rating['review']) ?> (<?= $rating['rating'] ?>)
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        <?php endif; ?>
+    <?php if (!empty($book['ratings'])): ?>
+        <h3>Reviews:</h3>
+        <ul>
+            <?php foreach ($book['ratings'] as $rating): ?>
+                <li>
+                    <strong>Rating by <?= htmlspecialchars($rating['username']) ?>:</strong><br>
+                    <?= htmlspecialchars($rating['review']) ?> (<?= $rating['rating'] ?>)
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
 
-        <?php if (isset($_SESSION['user'])): ?>
-            <h3>Add Your Review:</h3>
+    <?php if (isset($_SESSION['user'])): ?>
+        <?php if (!isBookMarkedAsRead($_SESSION['user']->id, $id)): ?>
             <form method="POST" action="">
-                <textarea name="review" placeholder="Enter your review"><?= isset($_POST['review']) ? htmlspecialchars($_POST['review']) : '' ?></textarea><br>
-                <?php if (isset($errors['review'])): ?>
-                    <p class="error"><?= $errors['review'] ?></p>
-                <?php endif; ?>
-                <label for="rating">Rating (1-5):</label>
-                <input type="number" name="rating" id="rating" min="1" max="5" value="<?= isset($_POST['rating']) ? $_POST['rating'] : '' ?>"><br>
-                <?php if (isset($errors['rating'])): ?>
-                    <p class="error"><?= $errors['rating'] ?></p>
-                <?php endif; ?>
-                <button type="submit" name="submit">Submit Review</button>
+                <button type="submit" name="mark_read">Mark as Read</button>
             </form>
         <?php else: ?>
-            <p>You need to <a href="login.php">login</a> to leave a review.</p>
+            <p>You have already marked this book as read.</p>
         <?php endif; ?>
-    </div>
 
-    <footer>
-        <p>IK-Library | ELTE IK Webprogramming</p>
-    </footer>
+        <h3>Add Your Review:</h3>
+        <form method="POST" action="">
+            <textarea name="review" placeholder="Enter your review"><?= isset($_POST['review']) ? htmlspecialchars($_POST['review']) : '' ?></textarea><br>
+            <?php if (isset($errors['review'])): ?>
+                <p class="error"><?= $errors['review'] ?></p>
+            <?php endif; ?>
+            <label for="rating">Rating (1-5):</label>
+            <input type="number" name="rating" id="rating" min="1" max="5" value="<?= isset($_POST['rating']) ? $_POST['rating'] : '' ?>"><br>
+            <?php if (isset($errors['rating'])): ?>
+                <p class="error"><?= $errors['rating'] ?></p>
+            <?php endif; ?>
+            <button type="submit" name="submit">Submit Review</button>
+        </form>
+    <?php else: ?>
+        <p>You need to <a href="login.php">login</a> to leave a review.</p>
+    <?php endif; ?>
+</div>
+
+<footer>
+    <p>IK-Library | ELTE IK Webprogramming</p>
+</footer>
 </body>
 </html>
