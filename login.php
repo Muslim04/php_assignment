@@ -35,7 +35,7 @@ if (count($_POST) > 0) {
         }
     }
 
-    $errors = array_map(fn($e) => "<span style='color: red'>$e</span>", $errors);
+    $errors = array_map(fn($e) => "<span>$e</span>", $errors);
 }
 ?>
 
@@ -46,15 +46,28 @@ if (count($_POST) > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="styles/form.css">
+    <style>
+        .register-link {
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+    </style>
 </head>
 <body>
-<?php if (count($_POST) > 0 && count($errors) == 0): ?>
-    <span style="color: green;">Successfully logged in!</span><br>
-<?php endif; ?>
-<form action="login.php" method="post">
-    Username: <input type="text" name="username" value="<?= htmlspecialchars($username) ?>" id="username" required> <?= $errors['username'] ?? '' ?><br>
-    Password: <input type="password" name="password" value="<?= htmlspecialchars($password) ?>" id="password" required> <?= $errors['password'] ?? '' ?><br>
-    <button type="submit">Login</button>
-</form>
+<div class="container">
+    <form action="login.php" method="post">
+        <label for="username">Username:</label>
+        <input type="text" name="username" value="<?= htmlspecialchars($username) ?>" id="username" required>
+        <?= $errors['username'] ?? '' ?>
+        
+        <label for="password">Password:</label>
+        <input type="password" name="password" value="<?= htmlspecialchars($password) ?>" id="password" required>
+        <?= $errors['password'] ?? '' ?>
+        
+        <button type="submit">Login</button>
+    </form>
+
+    <p class="register-link">Don't have an account? <a href="register.php">Register here</a></p>
+</div>
 </body>
 </html>
