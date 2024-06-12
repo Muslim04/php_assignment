@@ -17,7 +17,10 @@
                 "rating": 1
             }
         ],
-        "books_read": ["book0", "book1"]
+        "books_read": [
+            "book0",
+            "book1"
+        ]
     },
     "6669ce935f3c1": {
         "username": "KG047",
@@ -32,7 +35,9 @@
                 "rating": 5
             }
         ],
-        "books_read": ["book0"]
+        "books_read": [
+            "book0"
+        ]
     },
     "6669df3782953": {
         "username": "f",
@@ -57,7 +62,11 @@
                 "rating": 5
             }
         ],
-        "books_read": ["book0", "book1", "book3"]
+        "books_read": [
+            "book0",
+            "book1",
+            "book3"
+        ]
     },
     "666a09652c0b2": {
         "username": "dsfasd",

@@ -1,5 +1,5 @@
 <?php
-$reg = json_decode(file_get_contents("data/books.json"), true);
+$books = json_decode(file_get_contents("data/books.json"), true);
 
 session_start();
 
@@ -11,6 +11,27 @@ if (isset($_SESSION['user'])) {
     $user = $_SESSION['user'];
     if ($user->admin == 1) {
         $admin = true;
+    }
+    
+    if (!isset($user-> books_read)) {
+        $user-> books_read = [];
+    }
+}
+
+function updateSessionUser($user) {
+    $_SESSION['user'] = $user;
+}
+
+if ($curr_user && isset($_POST['mark_read']) && isset($_GET['id'])) {
+    $book_id = $_GET['id'];
+    
+    if (array_key_exists($book_id, $books) && !in_array($book_id, $user['books_read'])) {
+        $user['books_read'][] = $book_id;
+        
+        updateSessionUser($user);
+        
+        header("Location: index.php");
+        exit();
     }
 }
 ?>
@@ -40,14 +61,13 @@ if (isset($_SESSION['user'])) {
 </header>
 <div id="content">
     <div id="card-list">
-        <?php foreach ($reg as $book): ?>
+        <?php foreach ($books as $book): ?>
             <div class="book-card">
                 <div class="image">
                     <img src="assets/<?= $book['image'] ?>" alt="">
                 </div>
                 <div class="details">
-                    <h2><a href="book.php?id=<?= $book['id'] ?>"> <?= $book['title'] ?></
-                    ></a></h2>
+                    <h2><a href="book.php?id=<?= $book['id'] ?>"><?= $book['title'] ?></a></h2>
                 </div>
                 <?php if ($admin): ?>
                     <div class="edit">
@@ -56,12 +76,8 @@ if (isset($_SESSION['user'])) {
                 <?php endif; ?>
                 <?php if ($curr_user): ?>
                     <div class="read-status">
-                        <?php if (isset($user -> books_read) && in_array($book['id'], $user -> books_read)): ?>
-                            <p><strong>Read Status:</strong> Marked as read</p>
-                        <?php else: ?>
-                            <form method="POST" action="book.php?id=<?= $book['id'] ?>">
-                                <button type="submit" name="mark_read">Mark as Read</button>
-                            </form>
+                        <?php if (in_array($book['id'], $user -> books_read)): ?>
+                            <p><strong>Read Status:</strong> Read</p>
                         <?php endif; ?>
                     </div>
                 <?php endif; ?>
